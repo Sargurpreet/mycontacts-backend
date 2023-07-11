@@ -5,8 +5,12 @@ const {
   createContact,
   getContact,
   updateContact,
-  deleteContact } = require("../controllers/conotactController");
+  deleteContact 
+} = require("../controllers/conotactController");
+const validateToken = require('../middleware/validateTokenHandler');
 
+
+router.use(validateToken);
 router.route('/').get(getContacts).post(createContact);
 
 router.route('/:id').get(getContact).put(updateContact).delete(deleteContact);
